@@ -1,2 +1,30 @@
-# gayo-y-raton-2.0
-He desarrollado un simulador de persecución en Python donde un Ratón inteligente se enfrenta a un Gato implacable en un tablero bidimensional de 8x8. El objetivo era implementar el algoritmo Minimax para dotar al ratón de la capacidad de predecir el futuro y evitar ser capturado.
+# Proyecto: El Laberinto del Gato y el Ratón (Minimax Lab)
+
+## Descripción del Experimento
+He desarrollado un simulador de persecución en Python donde un **Ratón inteligente** se enfrenta a un **Gato implacable** en un tablero bidimensional de 8x8. El objetivo era implementar el algoritmo **Minimax** para dotar al ratón de la capacidad de predecir el futuro y evitar ser capturado.
+
+## Tecnologías Utilizadas
+* **Lenguaje:** Python 3.14
+* **Librerías:** `random` (para desempates), `os` (para limpieza de consola), `copy` (para simulación de estados).
+* **Algoritmo:** Minimax con profundidad configurable (Depth 3).
+
+## ¿Cómo funciona el cerebro del Ratón?
+El ratón no se mueve al azar. En cada turno, ejecuta una búsqueda en árbol:
+1. **Maximización:** El ratón busca la posición que maximice la distancia de Manhattan respecto al gato.
+2. **Minimización:** El ratón asume que el gato es inteligente y que elegirá el movimiento que más lo acerque.
+3. **Puntuación:** Si el gato atrapa al ratón en su "imaginación", ese camino recibe una puntuación de -100.
+
+## Bitácora de Desarrollo (¡Aja! Moments)
+
+### Lo que fue un desastre:
+- **El Bucle Infinito** Al principio, el gato y el ratón se quedaban oscilando entre dos casillas para siempre. 
+- **El Salto del Tigre** El gato a veces "atravesaba" al ratón porque el chequeo de victoria estaba mal ubicado en el flujo del código.
+
+### Mi mejor "¡Ajá!":
+- Descubrí que el **Minimax puro** es demasiado determinista. Si hay dos movimientos con la misma puntuación, el ratón siempre elegía el primero, causando los bucles. Lo solucioné implementando un **Desempate Aleatorio**: si dos caminos son igual de seguros, el ratón elige uno al azar, rompiendo la predictibilidad del gato.
+- Convertir al gato en un **agente Minimax**  transformó el juego de una simple persecución a un duelo de estrategias. El gato ya no solo sigue al ratón, sino que intenta predecir sus rutas de escape, obligándome a aumentar la profundidad del ratón para que pueda sobrevivir.
+- Implementar las **8 direcciones** para el ratón cambió drásticamente el equilibrio del juego. Aunque el gato use Minimax, la agilidad diagonal del ratón le permite encontrar rutas de escape que no existen en una cuadrícula tradicional de 4 movimientos.
+
+## Condiciones de Finalización
+* **Victoria del Gato:** Si alcanza la misma coordenada que el ratón.
+* **Victoria del Ratón:** Si logra sobrevivir 20 turnos sin ser atrapado.
