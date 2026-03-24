@@ -28,3 +28,28 @@ El ratón no se mueve al azar. En cada turno, ejecuta una búsqueda en árbol:
 ## Condiciones de Finalización
 * **Victoria del Gato:** Si alcanza la misma coordenada que el ratón.
 * **Victoria del Ratón:** Si logra sobrevivir 20 turnos sin ser atrapado.
+
+- **para q sirve upper.( )** :Es un método de cadenas de texto (strings) que se utiliza para convertir todos los caracteres alfabéticos de una cadena a mayúsculas. Los caracteres que no son letras (como números, símbolos o espacios) no se ven afectados.
+
+- **para q se usa "abs"** :es una función incorporada que devuelve el valor absoluto de un número. El valor absoluto de un número es su valor numérico sin tener en cuenta su signo. En términos simples, convierte los números negativos en positivos y deja los positivos igual.
+
+- **q hace max, min** : Son funciones incorporadas que se utilizan para encontrar el valor máximo y mínimo, respectivamente. Pueden recibir dos o más argumentos numéricos directos, o un objeto "iterable" (como una lista). Basicamente buscan el mayor o menor valor para poder utilizarlo.
+
+- **:^30}\n**  :Esta es una sintaxis especial de formateo de cadenas (f-strings) en Python. Se usa dentro de las llaves {} para controlar cómo se muestra una variable. Vamos a desglosarla:
+
+:: Indica el inicio de las opciones de formato.
+
+^: Es el símbolo para centrar el texto.
+
+30: Especifica el ancho total del campo en caracteres. El texto se centrará dentro de este espacio de 30 caracteres, rellenando con espacios en blanco a los lados si es necesario.
+
+}: Cierra la expresión del f-string.
+
+\n: Es un carácter especial que representa un salto de línea (como pulsar Enter). No es parte del formateo del texto en sí, sino que añade una línea en blanco después de imprimirlo.
+
+- **min eval, max eval** : Se usan convencionalmente dentro del algoritmo Minimax para llevar la cuenta de la mejor evaluación encontrada hasta el momento durante la búsqueda.
+
+- **float("inf")**: Es la forma en Python de representar el concepto matemático de infinito positivo ("inf") e infinito negativo ("-inf"). Al convertirlos a tipo flotante (float), obtenemos valores especiales que son garantizadamente mayores (o menores) que cualquier otro número real.
+
+- **Heuristica** : En términos sencillos, la heurística se refiere a atajos mentales o reglas generales que utilizamos para resolver problemas y tomar decisiones de forma rápida y eficiente, especialmente cuando nos enfrentamos a situaciones complejas, con información incompleta o cuando el tiempo es limitado.
+
