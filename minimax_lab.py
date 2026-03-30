@@ -9,18 +9,18 @@ class Laberinto:
         direcciones = [(-1, 0), (1, 0), (0, -1), (0, 1)]
             
         for dy, dx in direcciones:
-            new_y, new_x = y + dy, x + dx
+            new_y, new_x = y + dy, x + dx # posicion + direccion = nueva posicion
             # Verificación para que no salga de la matriz
-            if 0 <= new_y < self.dimensiones and 0 <= new_x < self.dimensiones:
+            if 0 <= new_y < self.dimensiones and 0 <= new_x < self.dimensiones:  
                 movimientos.append((new_y, new_x))
         return movimientos
 
     def __init__(self, dimensiones=8):
-        self.dimensiones = dimensiones
+        self.dimensiones = dimensiones   #self es la forma en que cada objeto se refiere a sí mismo, lo ayuda a englobarse para poder ser utilizado en el futuro
         # posiciones iniciales (fila, columna)
         self.gato_pos = [-1, 0]
         self.raton_pos = [dimensiones - 1, dimensiones - 1]
-        self.tablero = [] # Se inicializa vacío y se llena en actualizar_tablero
+        self.tablero = [] # se inicializa vacío y se llena en actualizar_tablero
         self.actualizar_tablero()
 
     def calcular_distancia(self, pos1, pos2):
@@ -29,17 +29,17 @@ class Laberinto:
 
     def actualizar_tablero(self):
         # creamos una matriz limpia llena de guiones '-'
-        self.tablero = [['-' for _ in range(self.dimensiones)] for _ in range(self.dimensiones)]
+        self.tablero = [['-' for _ in range(self.dimensiones)] for _ in range(self.dimensiones)]  # la _ es para no usar una vartable innecesaria
         
         # colocamos las piezas en sus posiciones actuales
         gy, gx = self.gato_pos
         ry, rx = self.raton_pos
         
-        # Asegurarnos de que las posiciones estén dentro de los límites
-        gy = max(0, min(gy, self.dimensiones - 1))
-        gx = max(0, min(gx, self.dimensiones - 1))
-        ry = max(0, min(ry, self.dimensiones - 1))
-        rx = max(0, min(rx, self.dimensiones - 1))
+        # asegurarnos de que las posiciones estén dentro de los límites
+        gy = max(0, min(gy, self.dimensiones - 1))   # aca le dices a Python: "Elige el menor entre la posición actual y el límite máximo
+        gx = max(0, min(gx, self.dimensiones - 1))   # ahora tomamos ese resultado y lo comparamos con el límite mínimo (0)
+        ry = max(0, min(ry, self.dimensiones - 1))   # si el resultado anterior fue 7: max(0, 7) devuelve 7. (Sigue igual).Si el resultado anterior fue -2,
+        rx = max(0, min(rx, self.dimensiones - 1))   # (porque el gato intentó subir más allá de la fila 0), max(0, -2) devuelve 0. (Lo frenamos en el borde superior)
 
         self.tablero[gy][gx] = 'G'
         self.tablero[ry][rx] = 'R'
@@ -89,14 +89,14 @@ def movimiento_usuario(juego):
             print("¡Entrada inválida! Usa W, A, S o D.")
             continue
         
-        dr, dc = 0, 0
+        dr, dc = 0, 0   # uso de vectores en lugar de muchos if,  Delta Row (Cambio en la Fila / vertical).  Delta Column (Cambio en la Columna / horizontal)
         if entrada == 'W': dr = -1 # Arriba
         elif entrada == 'S': dr = 1  # Abajo
         elif entrada == 'A': dc = -1 # Izquierda
         elif entrada == 'D': dc = 1  # Derecha
         
         r, c = juego.raton_pos
-        nueva_pos = [r + dr, c + dc]
+        nueva_pos = [r + dr, c + dc]  # row + direccion row, column + direccion column
         
         # verifica si el movimiento esta dentro de la matriz
         if 0 <= nueva_pos[0] < juego.dimensiones and 0 <= nueva_pos[1] < juego.dimensiones:
@@ -118,13 +118,13 @@ def jugar():
         
         # --- TURNO DEL GATO con MINIMAX ---
         posibles_gato = juego.movimientos_permitidos(juego.gato_pos)
-        mejor_puntuacion_gato = float('inf') 
+        mejor_puntuacion_gato = float('inf')  # la mejor posicion del gato esta en positivo infinito y el lo que busca es bajar lo mas posible su punatuacion
         mejores_movimientos_gato = []
 
         for mov in posibles_gato:
-            # el gato simula el futuro (Profundidad 4 es buena)
-            puntuacion = juego.minimax(list(mov), juego.raton_pos, 4, True)
-            
+            # el gato simula el futuro, Profundidad 4
+            puntuacion = juego.minimax(list(mov), juego.raton_pos, 4, True) # es "true" pq el gato ya eligio su movimiento (en el punto1), luego dentro de la simulacion
+            # le toca al raton y busca su mejor puntuacion posible, y le pasamos "true" para que busque la mejor escapatoria posible en su siguiente turno simulado
             if puntuacion < mejor_puntuacion_gato:
                 mejor_puntuacion_gato = puntuacion
                 mejores_movimientos_gato = [mov]
@@ -133,7 +133,7 @@ def jugar():
 
         # el gato elige su mejor opción
         if mejores_movimientos_gato:
-            juego.gato_pos = list(random.choice(mejores_movimientos_gato))
+            juego.gato_pos = list(random.choice(mejores_movimientos_gato))  # por si hay dos opciones que den la misma puntuacion, q no se repita siempre el mismo
         
         juego.actualizar_tablero()
         juego.mostrar() 
@@ -161,5 +161,5 @@ def jugar():
             print("Game Over... un movimiento poco inteligente.")
             break
 
-if __name__ == "__main__":
+if __name__ == "__main__":   # si este archivo está siendo ejecutado directamente por el usuario (y no siendo importado por otro programa), entonces haz lo siguiente...
     jugar()

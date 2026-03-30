@@ -53,3 +53,46 @@ El ratón no se mueve al azar. En cada turno, ejecuta una búsqueda en árbol:
 
 - **Heuristica** : En términos sencillos, la heurística se refiere a atajos mentales o reglas generales que utilizamos para resolver problemas y tomar decisiones de forma rápida y eficiente, especialmente cuando nos enfrentamos a situaciones complejas, con información incompleta o cuando el tiempo es limitado.
 
+1. **Arquitectura y Estructura (POO)**
+Programación Orientada a Objetos (POO): Explica que usaste una  *class Laberinto* para encapsular toda la lógica. Esto hace que el código sea organizado y reutilizable.
+
+El Constructor (__init__): Menciona que aquí es donde se define el "estado inicial" del sistema (dimensiones del tablero y posiciones de los jugadores).
+
+Métodos de Interfaz: Resalta  *mostrar()* y  *actualizar_tablero()* como la capa de visualización que permite al usuario interactuar con la lógica interna.
+
+2.  **El Corazón de la IA: Algoritmo Minimax**
+Este es el punto más importante de la exposición. 
+
+ *Árbol de Decisión:* Explica que el gato no elige al azar, sino que construye un árbol de posibles futuros.
+
+ *Recursividad:* Menciona que la función minimax se llama a sí misma para explorar niveles más profundos.
+
+ *Caso Base:* Es vital mencionar que la recursión se detiene por profundidad (límite de visión) o por victoria (el gato atrapa al ratón).
+
+ **Maximización vs. Minimización:* * El Ratón actúa como un agente que maximiza la distancia (quiere alejarse).
+
+El Gato actúa como un agente que minimiza esa misma distancia (quiere acercarse).
+
+3.  **Lógica Matemática y Espacial**
+ *Distancia de Manhattan:* Explica por qué elegiste esta y no la Euclidiana (Pitágoras). Di que es más precisa para movimientos en una rejilla donde no hay diagonales (movimiento tipo "Taxi").
+
+ *Representación Matricial:* El tablero es una matriz bidimensional (lista de listas), que es la estructura de datos estándar para entornos de juegos 2D.
+
+ *Vectores de Movimiento:* Explica el uso de dr (Delta Row) y dc (Delta Column) para calcular desplazamientos de forma matemática y limpia.
+
+4.  **Robustez y Control de Errores**
+ *Clamping (Límites):* Menciona el uso de max() y min() para evitar que las coordenadas se salgan de los índices de la matriz, previniendo errores de "Index Out of Range".
+
+ *Validación de Entradas:* Cómo el programa maneja las teclas (W, A, S, D) y rechaza cualquier otra entrada inválida.
+
+5.  **Conceptos Avanzados de Python**
+*List Comprehensions:* Menciona que usaste esta sintaxis avanzada para crear el tablero de forma eficiente en una sola línea.
+
+*Copiado de Datos (list(mov)):* Explica la importancia de pasar copias de las posiciones a la recursión para no alterar el estado real del juego durante la simulación.
+
+*Punto de Entrada (if __name__ == "__main__":):* Explica que esto asegura que el juego solo inicie si el archivo se ejecuta directamente, permitiendo que el código sea modular.
+
+- Tip Extra:
+Si el jurado te pregunta: "¿Cómo lo mejorarías?", tú responde:
+
+"Para tableros más grandes, implementaría la Poda Alfa-Beta (Alpha-Beta Pruning) para descartar ramas del árbol que no son prometedoras y así ahorrar recursos computacionales".
