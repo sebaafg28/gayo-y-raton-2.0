@@ -5,7 +5,7 @@ He desarrollado un simulador de persecución en Python donde un **Ratón intelig
 
 ## Tecnologías Utilizadas
 * **Lenguaje:** Python 3.14
-* **Librerías:** `random` (para desempates), `os` (para limpieza de consola), `copy` (para simulación de estados).
+* **Librerías:** `random` (para desempates), `os` (para limpieza de consola),  .
 * **Algoritmo:** Minimax con profundidad configurable (Depth 3).
 
 ## ¿Cómo funciona el cerebro del Ratón?

@@ -105,7 +105,7 @@ def movimiento_usuario(juego):
             print("¡Movimiento fuera de los límites! Intenta otra dirección.")
 
 def jugar():
-    dimensiones_tablero = 8
+    dimensiones_tablero = 8 # aca se controla las dimensiones del tablero
     juego = Laberinto(dimensiones=dimensiones_tablero)
     turno_actual = 0
     limite_turnos = 3
